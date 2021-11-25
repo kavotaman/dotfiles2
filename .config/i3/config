@@ -1,0 +1,539 @@
+# This file a modified version based by default i3-config-wizard config
+# source is available here:
+# https://raw.githubusercontent.com/endeavouros-team/i3-EndeavourOS/master/.config/i3/config
+# Maintainer: joekamprad [joekamprad@endeavouros.com]
+# https://endeavouros.com
+#
+# --> to update this run the following command:
+# wget --backups=1 https://raw.githubusercontent.com/endeavouros-team/i3-EndeavourOS/master/.config/i3/config -P ~/.config/i3/
+
+
+# i3 config file
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# workspace layouts:
+#default i3 tiling mode
+workspace_layout default
+
+#do not show titlebar on windows: 
+new_window 1pixel
+
+#focus follows mouse
+focus_follows_mouse no
+
+# i3help
+bindsym $mod+question exec i3help
+
+#workspace_layout stacking
+
+#workspace_layout tabbed
+#Tiling mode is tabbed:
+#so each new window will open fullscreen as a tab, you can change between window-tabs with mouse or shortcut:
+#
+#    [mod]+Left focus left (left arrow key)
+#    [mod]+Right focus right (right arrow key)
+
+
+#get auth work with polkit-gnome
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Noto Sans Regular 8
+
+# thin borders
+hide_edge_borders both
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# kill focused window
+bindsym $mod+q kill
+
+# open keybindings overview
+bindsym $mod+F1 exec "xed ~/.config/i3/keybindings"
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+bindsym $mod+d exec --no-startup-id dmenu_run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+Shift+e split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+space layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Ctrl+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+Shift+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+#workspace-edit
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+bindsym $mod+s exec --no-startup-id ~/.config/i3/scripts/empty_workspace.sh
+
+#autostart start applications
+#bind program to workspace
+#assign [class="Xfce4-terminal"] $ws2
+#for_window [class=Xfce4-terminal] focus
+#assign [class="(?i)firefox"] $ws3
+#for_window [class=(?i)firefox] focus
+#assign [class="Thunar"] $ws4
+#for_window [class=Thunar] focus
+#assign [class="Thunderbird"] $ws5
+#for_window [class=Thunderbird] focus
+#assign [class="TelegramDesktop"] $ws6
+#for_window [class=TelegramDesktop] focus
+
+# Autostart apps
+#exec --no-startup-id sleep 2 && xfce4-terminal
+#exec --no-startup-id firefox
+#exec --no-startup-id sleep 3 && thunar
+exec --no-startup-id blueberry-tray
+exec --no-startup-id megasync
+exec --no-startup-id sleep 3 && insync start
+exec --no-startup-id libinput-gestures-setup start
+exec --no-startup-id i3-battery-popup -n -D -L 20 -l 10
+
+# polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#transparency 
+#exec --no-startup-id xcompmgr -c
+exec --no-startup-id picom -cC
+
+# disable DPMS screen blanking
+exec --no-startup-id xset s off -dpms
+exec --no-startup-id xset s noblank
+
+#networkmanager-applet
+exec --no-startup-id nm-applet
+
+#set wallpaper
+exec --no-startup-id nitrogen --restore
+
+#set powersavings for display:
+#exec --no-startup-id xset s 480 dpms 600 600 600
+
+# Desktop notifications
+exec --no-startup-id /usr/bin/dunst
+
+#get latest configs from GitHub
+exec --no-startup-id git clone https://github.com/endeavouros-team/i3-EndeavourOS.git ~/.config/i3/original/
+
+bindsym $mod+n exec --no-startup-id kitty --class kitty-floating ./notes.sh
+bindsym $mod+ctrl+n exec --no-startup-id exec /home/omk/AppImages/Joplin-1.7.11.AppImage
+# aliases
+bindsym $mod+a exec --no-startup-id kitty --class kitty-floating -e 'nvim /home/omk/MEGA/Documents\ M/Linux/aliases.txt'
+bindsym $mod+Shift+s exec --no-startup-id bash /home/omk/.config/i3/scripts/notes_site.sh
+
+bindsym $mod+c exec kitty --class kitty-floating -e qalc
+
+# Floating terminal for specific applications
+
+# bindsym … exec --no-startup-id kitty --role floating_term
+# for_window [window_role=floating_term] floating enable
+for_window [class="kitty-floating"] floating enable
+for_window [class="kitty-floating"] resize set 640 480
+# kitty --class kitty-floating
+
+
+#conky
+exec_always --no-startup-id $HOME/.config/conky/launch.sh 
+
+# update notification should be set to tray and notification
+#exec --no-startup-id sleep 15 && eos-update-notifier
+#exec --no-startup-id sleep 15 && eos-welcome
+
+# set floating (nontiling)for apps needing it
+for_window [class="Yad" instance="yad"] floating enable
+for_window [class="Galculator" instance="galculator"] floating enable
+for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+
+#set floating (nontiling) for special apps
+for_window [class="Xsane" instance="xsane"] floating enable
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="qt5ct" instance="qt5ct"] floating enable
+for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [title="notetaker_window"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [title="/home/omk/Storage/Insync/Linux/Linux/aliases.pdf"] floating enable
+for_window [title="/home/omk/Storage/Insync/Linux/Linux/bindsym_i3.pdf"] floating enable
+for_window [title="/home/omk/Storage/Insync/Linux/Linux/linux_on_mac.pdf"] floating enable
+for_window [title="/home/omk/MEGA/Documents\ M/WEBSITE/notes.pdf"] floating enable
+
+#resize floating windows with mouse scroll:
+bindsym --whole-window --border $mod+button4 resize shrink height 5 px or 5 ppt
+bindsym --whole-window --border $mod+button5 resize grow height 5 px or 5 ppt
+bindsym --whole-window --border $mod+shift+button4 resize shrink width 5 px or 5 ppt
+bindsym --whole-window --border $mod+shift+button5 resize grow width 5 px or 5 ppt
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+q exec i3-msg exit
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 1 px or 1 ppt
+        bindsym j resize grow height 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+        bindsym l resize grow width 1 px or 1 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+set $bg-color            #ffc52a
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676e7d
+set $urgent-bg-color     #e53935
+set $indicator-color     #a0a0a0
+
+# set window colors
+#                       border             background         text                 indicator
+client.focused          $bg-color          $bg-color          $text-color          $indicator-color
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#	status_command i3status
+#	font pango:monospace 9
+#        
+#	colors {
+#		background $bg-color
+#	    	separator #757575
+#		#                  border             background         text
+#		focused_workspace  $bg-color          $bg-color          $text-color
+#		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#	}
+#}
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#    status_command i3blocks -c ~/.config/i3/i3blocks.conf 
+#    position top
+#    colors {
+#      separator          #666666
+#        background         #222222
+#        statusline         #dddddd
+#        focused_workspace  #0088CC #0088CC #ffffff
+#        active_workspace   #333333 #333333 #ffffff
+#        inactive_workspace #333333 #333333 #888888
+#        urgent_workspace   #2f343a #900000 #ffffff
+#    }
+#}
+
+# Multimedia Keys
+
+# volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+
+# gradular volume control
+bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+
+# mute
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle
+
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# xrandr
+bindsym $mod+m exec --no-startup-id xrandr --output LVDS1 --primary --mode 1280x800 --rate 60.22 --output HDMI1 --mode 1920x1080 --rate 60.00 --right-of LVDS1 
+bindsym $mod+shift+m exec --no-startup-id xrandr --output HDMI1 --off
+
+# backlight screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+# keyboard backlight
+bindsym XF86KbdBrightnessUp exec --no-startup-id kbdbacklight up
+bindsym XF86KbdBrightnessDown exec --no-startup-id kbdbacklight down
+
+# App shortcuts
+bindsym $mod+b exec --no-startup-id "/usr/bin/chromium"
+bindsym $mod+w exec "/usr/bin/firefox-beta"
+bindsym $mod+p exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
+bindsym $mod+e exec "/usr/bin/pcmanfm"
+#bindsym $mod+n exec --no-startup-id alacritty -e nvim ~/MEGA/Notes/notes.txt
+
+# Redirect sound to headphones
+#bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
+
+# rofi bindings simple menu
+#bindsym F9 exec rofi -modi drun -show drun -lines 7
+#bindsym F10 exec rofi -show run   -lines 7
+#bindsym F12 exec rofi -show window -lines 7
+
+# Lock the system
+#bindsym $mod+l exec i3lock -i ~/.config/i3/i3-lock-screen.png -t -f
+
+# jgmenu
+
+bindsym $mod+i exec --no-startup-id jgmenu_run
+
+
+# rofi bindings fancy application menu
+# bindsym $mod+i exec rofi -modi drun -show drun -line-padding 4 \
+#                 -columns 2 -padding 50 -hide-scrollbar \
+#                 -show-icons -drun-icon-theme "Arc-X-D" -font "Droid Sans Regular 10"
+                
+bindsym F9 exec rofi -modi drun -show drun -line-padding 4 \
+                -columns 2 -padding 50 -hide-scrollbar \
+                -show-icons -drun-icon-theme "Arc-X-D" -font "Droid Sans Regular 10"
+
+bindsym $mod+o exec rofi -show window -line-padding 4 \
+                -lines 6 -padding 50 -hide-scrollbar \
+                -show-icons -drun-icon-theme "Arc-X-D" -font "Droid Sans Regular 10"
+
+bindsym F10 exec rofi -show window -line-padding 4 \
+                -lines 6 -padding 50 -hide-scrollbar \
+                -show-icons -drun-icon-theme "Arc-X-D" -font "Droid Sans Regular 10"                
+                
+
+for_window [class="Spotify"] move to workspace $ws3
+for_window [class="Nestopia"] move to workspace $ws4
+
+# i3-gaps config
+
+for_window [class="^.*"] border pixel 2
+gaps inner 7
+gaps outer 0
+
+set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_verti Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_top Top Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym h      mode "$mode_gaps_horiz"
+        bindsym v      mode "$mode_gaps_verti"
+        bindsym t      mode "$mode_gaps_top"
+        bindsym r      mode "$mode_gaps_right"
+        bindsym b      mode "$mode_gaps_bottom"
+        bindsym l      mode "$mode_gaps_left"
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_horiz" {
+        bindsym plus  gaps horizontal current plus 5
+        bindsym minus gaps horizontal current minus 5
+        bindsym 0     gaps horizontal current set 0
+
+        bindsym Shift+plus  gaps horizontal all plus 5
+        bindsym Shift+minus gaps horizontal all minus 5
+        bindsym Shift+0     gaps horizontal all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_verti" {
+        bindsym plus  gaps vertical current plus 5
+        bindsym minus gaps vertical current minus 5
+        bindsym 0     gaps vertical current set 0
+
+        bindsym Shift+plus  gaps vertical all plus 5
+        bindsym Shift+minus gaps vertical all minus 5
+        bindsym Shift+0     gaps vertical all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_top" {
+        bindsym plus  gaps top current plus 5
+        bindsym minus gaps top current minus 5
+        bindsym 0     gaps top current set 0
+
+        bindsym Shift+plus  gaps top all plus 5
+        bindsym Shift+minus gaps top all minus 5
+        bindsym Shift+0     gaps top all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_right" {
+        bindsym plus  gaps right current plus 5
+        bindsym minus gaps right current minus 5
+        bindsym 0     gaps right current set 0
+
+        bindsym Shift+plus  gaps right all plus 5
+        bindsym Shift+minus gaps right all minus 5
+        bindsym Shift+0     gaps right all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_bottom" {
+        bindsym plus  gaps bottom current plus 5
+        bindsym minus gaps bottom current minus 5
+        bindsym 0     gaps bottom current set 0
+
+        bindsym Shift+plus  gaps bottom all plus 5
+        bindsym Shift+minus gaps bottom all minus 5
+        bindsym Shift+0     gaps bottom all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_left" {
+        bindsym plus  gaps left current plus 5
+        bindsym minus gaps left current minus 5
+        bindsym 0     gaps left current set 0
+
+        bindsym Shift+plus  gaps left all plus 5
+        bindsym Shift+minus gaps left all minus 5
+        bindsym Shift+0     gaps left all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}

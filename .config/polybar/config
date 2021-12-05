@@ -1,4 +1,3 @@
-
 [colors]
 background = #00000222
 background-alt = #444
@@ -43,7 +42,7 @@ modules-right = updates kill l_on_m site bindings aliases notes films qalc xback
 tray-position = right
 tray-padding = 1
 ;tray-background = #0063ff
-tray-maxsize = 13
+tray-maxsize = 33
 tray-offset-x = 0
 tray-offset-y = -2
 

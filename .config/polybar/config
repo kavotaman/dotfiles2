@@ -1,19 +1,55 @@
 [colors]
 background = #00000222
 background-alt = #444
+bg = #55000222
 foreground = #eeffffff
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+[bar/bspwm]
+wm-restack = bspwm
+monitor = ${env:MONITOR:}
+width = 100%
+height = 23
+override-redirect = true
+
+line-size = 0
+line-color = #f00
+
+fixed-center = false
+border-size= 0
+; background = ${colors.background}
+background = ${colors.bg}
+foreground = ${colors.foreground}
+padding-left = 2
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = Hack Nerd Font:size=10.3;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = Hack Nerd Font:size=12;1
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+tray-position = right
+tray-padding = 1
+tray-maxsize = 43
+tray-offset-x = 0
+tray-offset-y = -2
+
+modules-left = menu bspwm
+modules-center =
+modules-right = updates kill l_on_m site bindings aliases notes films qalc xbacklight pulseaudio xkeyboard battery date
+
 [bar/omk]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 20
-;offset-x = 1%
-;offset-y = 1%
-;radius = 5
 fixed-center = false
 
 background = ${colors.background}
@@ -35,9 +71,9 @@ font-0 = Hack Nerd Font:size=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = menu i3
+modules-left = menu i3 bspwm
 modules-center =
-modules-right = updates kill l_on_m site bindings aliases notes films qalc xbacklight pulseaudio xkeyboard battery date powermenu
+modules-right = updates kill l_on_m site bindings aliases notes films qalc xbacklight pulseaudio xkeyboard battery date
 
 tray-position = right
 tray-padding = 1
@@ -45,13 +81,6 @@ tray-padding = 1
 tray-maxsize = 33
 tray-offset-x = 0
 tray-offset-y = -2
-
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize

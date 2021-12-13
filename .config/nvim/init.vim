@@ -26,11 +26,20 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'itchyny/calendar.vim'
 Plug 'mbbill/undotree'
 " Color Themes
-Plug 'morhetz/gruvbox'
+Plug 'haishanh/night-owl.vim'
+" Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
+
+" Color Theme
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+syntax enable
+colorscheme night-owl
 
 let g:vim_markdown_frontmatter = 1
 " set to 1, nvim will open the preview window after entering the markdown buffer
@@ -126,7 +135,7 @@ let g:mkdp_filetypes = ['markdown']
 
 set nocompatible            " disable compatibility to old-time vi
 set clipboard=unnamedplus
-set showmatch               " show matching brackets.
+" set showmatch               " show matching brackets.
 set ignorecase              " case insensitive matching
 set mouse=a                 " if v=middle-click paste with mouse
 set nohlsearch                " highlight search results
@@ -161,7 +170,7 @@ command! MakeTags !ctags -R .
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-autocmd vimenter * ++nested colorscheme gruvbox
+" autocmd vimenter * ++nested colorscheme gruvbox
 
 " Map
 

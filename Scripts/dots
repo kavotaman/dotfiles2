@@ -1,0 +1,7 @@
+#!/bin/bash
+
+/usr/bin/git --git-dir=/home/omk/.dotfiles2/ --work-tree=/home/omk add ~/Scripts ~/.config/bspwm ~/.config/nvim ~/.config/sxhkd ~/.config/conky ~/.config/ranger ~/.config/kitty ~/.config/libinput-gestures.conf ~/.config/picom.conf ~/.config/youtube-dl.conf ~/fortunes ~/.aliases ~/.bashrc 
+
+/usr/bin/git --git-dir=/home/omk/.dotfiles2/ --work-tree=/home/omk commit -m "updatessss"
+
+/usr/bin/git --git-dir=/home/omk/.dotfiles2/ --work-tree=/home/omk push

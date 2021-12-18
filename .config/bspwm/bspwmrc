@@ -19,6 +19,7 @@ bspc rule -a Nestopia desktop='^4' state=floating follow=off
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a kitty state=floating
+bspc rule -a Pavucontrol state=floating
 
 # Border
 bspc config focused_border_color        "#ffc52a"
@@ -28,7 +29,6 @@ bspc config active_border_color         "#073642"
 # Autostart
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/bin/dunst &
-# nitrogen --restore &
 nitrogen --random --set-zoom-fill /home/omk/Pictures/WP &
 picom -CGb &
 nm-applet --indicator &

@@ -1,4 +1,4 @@
-set $mod Mod4
+et $mod Mod4
 
 # workspace layouts:
 #default i3 tiling mode
@@ -229,7 +229,7 @@ bindsym XF86KbdBrightnessDown exec --no-startup-id kbdbacklight down
 # App shortcuts
 bindsym $mod+b exec --no-startup-id "/usr/bin/chromium"
 bindsym $mod+w exec "/usr/bin/firefox-beta"
-bindsym $mod+p exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
+bindsym $mod+p exec "scrot ~/Screenshots/%Y-%m-%d-%T-screenshot.png"
 bindsym $mod+e exec "/usr/bin/pcmanfm"
 
 # Lock the system

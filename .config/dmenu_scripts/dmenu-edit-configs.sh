@@ -54,5 +54,5 @@ case "$choice" in
 esac
 
 # Ultimately, what do want to do with our choice?  Open in our editor!
-alacritty -e nvim "$choice"
+kitty -e nvim "$choice"
 

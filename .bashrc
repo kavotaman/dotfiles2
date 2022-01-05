@@ -7,22 +7,34 @@
 
 [[ -f ~/.welcome_screen ]] && . ~/.welcome_screen
 
-# _set_my_PS1() {
-#     PS1='[\u@\h \W]\$ '
-#     if [ "$(whoami)" = "liveuser" ] ; then
-#         local iso_version="$(grep ^VERSION= /usr/lib/endeavouros-release 2>/dev/null | cut -d '=' -f 2)"
-#         if [ -n "$iso_version" ] ; then
-#             local prefix="eos-"
-#             local iso_info="$prefix$iso_version"
-#             PS1="[\u@$iso_info \W]\$ "
-#         fi
-#     fi
-# }
+# Theme.sh
 
-PS1="\W \$ "
+# theme.sh farin
 
-# _set_my_PS1
-# unset -f _set_my_PS1
+if command -v theme.sh > /dev/null; then
+	[ -e ~/.theme_history ] && theme.sh "$(theme.sh -l|tail -n1)"
+
+	# Optional
+
+	#Binds C-o to the previously active theme.
+	bind -x '"\C-o":"theme.sh $(theme.sh -l|tail -n2|head -n1)"'
+
+	alias th='theme.sh -i'
+
+	# Interactively load a light theme
+	alias thl='theme.sh --light -i'
+
+	# Interactively load a dark theme
+	alias thd='theme.sh --dark -i'
+fi
+
+# fzf
+
+export FZF_DEFAULT_OPTS='--height=70% --preview="cat {}" --preview-window=right:60%:wrap'
+
+
+# PS1="\W \$ "
+PS1='\[\e[36m\W\] \[\e[33m\]\[\e[1m\]$ \[\e[0m\]'
 
 ShowInstallerIsoInfo() {
     local file=/usr/lib/endeavouros-release
@@ -82,4 +94,5 @@ export PATH="$HOME/Scripts:$PATH"
 
 # run
 
-fortune 33% ~/fortunes/comedy 33% ~/fortunes/douglas_adams 34% ~/fortunes/wikipedia | cowsay-random
+fortune 33% ~/fortunes/comedy 33% ~/fortunes/douglas_adams 34% ~/fortunes/wikipedia | cowsay | lolcat
+# dolar | cowsay -f dragon | lolcat

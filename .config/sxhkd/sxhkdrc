@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	kitty
 
 # program launcher
 super + d
@@ -59,8 +59,8 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -144,12 +144,12 @@ super + shift + i
   i3lock -i Atibaia_lock.png
 
 # Screenshot
-Print
-  scrot ~/Screenshots/Screenshot-$(date +%F_%T).png
+super + p
+  scrot /home/omk/Screenshots/Screenshot-$(date +%F_%T).png
 
 # Shortcuts
 super + w 
-  firefox-beta
+  firefox
 
 super + e
   pcmanfm

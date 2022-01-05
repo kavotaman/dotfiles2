@@ -1,3 +1,5 @@
+" leader key = \
+
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'plasticboy/vim-markdown'
@@ -8,25 +10,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Tags
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround' " maybe delete
-" Plug 'mattn/emmet-vim'
 " Commenting
 Plug 'tpope/vim-commentary'
-" Syntax highlighting
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
-" Plug 'rust-lang/rust.vim'
-" Motions
-" Plug 'easymotion/vim-easymotion'
-" Plug 'junegunn/fzf.vim'
-" Plug 'junegunn/goyo.vim'
-" Plug 'vimwiki/vimwiki'
-" Plug 'tpope/vim-repeat'
-" Plug 'dhruvasagar/vim-table-mode'
-" Plug 'itchyny/calendar.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'mbbill/undotree'
 " Color Themes
-Plug 'haishanh/night-owl.vim'
+" Plug 'haishanh/night-owl.vim'
 " Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
@@ -34,12 +24,15 @@ Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
 
 " Color Theme
-if (has("termguicolors"))
- set termguicolors
-endif
+" if (has("termguicolors"))
+"  set termguicolors
+" endif
 
 syntax enable
-colorscheme night-owl
+" colorscheme night-owl
+colorscheme default
+set notermguicolors
+highlight Search ctermfg=0
 
 let g:vim_markdown_frontmatter = 1
 " set to 1, nvim will open the preview window after entering the markdown buffer
@@ -132,6 +125,16 @@ let g:mkdp_page_title = '「${name}」'
 " recognized filetypes
 " these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown']
+
+" Goyo config
+
+let g:goyo_width = 80 " (default: 80)
+let g:goyo_height = 95 " (default: 85%)
+let g:goyo_linenr = 0 " (default: 0)
+
+nmap <leader>gy :Goyo<CR>
+
+
 
 set nocompatible            " disable compatibility to old-time vi
 set clipboard=unnamedplus

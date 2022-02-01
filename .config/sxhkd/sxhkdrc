@@ -133,6 +133,23 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
   xbacklight -dec 10
 
+# Brightness up
+ctrl + equal
+  xbacklight -inc 10
+
+# And brightness down
+ctrl + minus
+  xbacklight -dec 10
+
+# Brightness up
+super + equal
+  xbacklight -inc 100
+
+# And brightness down
+super + minus
+  xbacklight -dec 100
+
+
 # Keyboard backlight
 XF86KbdBrightnessUp
   kbdbacklight up

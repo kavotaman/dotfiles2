@@ -96,3 +96,8 @@ export PATH="$HOME/Scripts:$PATH"
 
 fortune 33% ~/fortunes/comedy 33% ~/fortunes/douglas_adams 34% ~/fortunes/wikipedia | cowsay | lolcat
 # dolar | cowsay -f dragon | lolcat
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION

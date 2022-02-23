@@ -134,11 +134,11 @@ XF86MonBrightnessDown
   xbacklight -dec 10
 
 # Brightness up
-ctrl + equal
+alt + ctrl + equal
   xbacklight -inc 10
 
 # And brightness down
-ctrl + minus
+alt + ctrl + minus
   xbacklight -dec 10
 
 # Brightness up

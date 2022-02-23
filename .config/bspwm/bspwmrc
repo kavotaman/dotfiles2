@@ -34,7 +34,7 @@ nitrogen --random --set-zoom-fill /home/omk/Pictures/WP &
 picom -CGb &
 nm-applet --indicator &
 ~/.config/bspwm/scripts/low_bat_notifier.sh
-megasync &
+# megasync &
 sleep 3 && insync start &
 libinput-gestures-setup start &
 $HOME/.config/polybar/bspwm.sh &

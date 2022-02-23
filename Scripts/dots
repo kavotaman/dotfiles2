@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/usr/bin/git --git-dir=/home/omk/.dotfiles2/ --work-tree=/home/omk add ~/Scripts ~/.config/bspwm ~/.config/nvim/init.vim ~/.config/sxhkd ~/.config/conky ~/.config/ranger ~/.config/kitty ~/.config/libinput-gestures.conf ~/.config/picom.conf ~/.config/youtube-dl.conf ~/fortunes ~/.aliases ~/.bashrc ~/.config/ncmpcpp/config /home/omk/.mpd/mpd.conf /home/omk/.mozilla/firefox/cd91aoed.default-release-1/chrome/userChrome.css
+/usr/bin/git --git-dir=/home/omk/.dotfiles2/ --work-tree=/home/omk add ~/Scripts ~/.config/bspwm ~/.config/nvim/init.vim ~/.config/sxhkd ~/.config/conky ~/.config/ranger/ ~/.config/kitty ~/.config/libinput-gestures.conf ~/.config/picom.conf ~/.config/youtube-dl.conf ~/fortunes ~/.aliases ~/.bashrc ~/.config/ncmpcpp/config /home/omk/.mpd/mpd.conf /home/omk/.mozilla/firefox/cd91aoed.default-release-1/chrome/userChrome.css
 
 /usr/bin/git --git-dir=/home/omk/.dotfiles2/ --work-tree=/home/omk commit -m "updatessss"
 

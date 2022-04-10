@@ -94,7 +94,7 @@ export PATH="$HOME/Scripts:$PATH"
 
 # run
 
-fortune 80% ~/fortunes/omk 20% disclaimer | cowsay | lolcat
+fortune 90% ~/fortunes/omk 10% disclaimer | cowsay
 # dolar | cowsay -f dragon | lolcat
 
 

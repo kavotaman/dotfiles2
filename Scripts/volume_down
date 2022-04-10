@@ -1,0 +1,5 @@
+#!/bin/bash
+
+amixer -q set Master unmute
+pactl set-sink-volume 0 -4%
+

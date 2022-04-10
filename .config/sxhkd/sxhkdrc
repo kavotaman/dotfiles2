@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	kitty
+	alacritty
 
 # program launcher
 super + d
@@ -115,16 +115,18 @@ super + {Left,Down,Up,Right}
 
 # Multimedia keys
 XF86AudioRaiseVolume
-  amixer -q set Master 5%+ unmute
+#   amixer -q set Master 3%+ unmute
+  /home/omk/Scripts/volume_up
 
 # Still muøltimedia
 XF86AudioLowerVolume
-  amixer -q set Master 5%- unmute
+#   amixer -q set Master 3%- unmute
+  /home/omk/Scripts/volume_down
 
 # still
 XF86AudioMute
   amixer -q -D pulse sset Master toggle
-  
+
 # Brightness up
 XF86MonBrightnessUp
   xbacklight -inc 10
@@ -181,8 +183,13 @@ super + shift + d
   /home/omk/.config/dmenu_scripts/dmenu-edit-configs.sh
 
 super + m
-  xrandr --output LVDS1 --primary --mode 1280x800 --rate 60.22 --output HDMI1 --mode 1920x1080 --rate 60.00 --right-of LVDS1 
+  xrandr --output LVDS1 --primary --mode 1280x800 --rate 60.22 --output HDMI1 --mode 1920x1080 --rate 60.00 --right-of LVDS1
+
+# super + m
+#  xrandr --output HDMI1 --same-as LVDS1 
 
 super + shift + m
   xrandr --output HDMI1 --off
 
+super + b
+  chromium

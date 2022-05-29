@@ -182,11 +182,11 @@ super + c
 super + shift + d
   /home/omk/.config/dmenu_scripts/dmenu-edit-configs.sh
 
-super + m
-  xrandr --output LVDS1 --primary --mode 1280x800 --rate 60.22 --output HDMI1 --mode 1920x1080 --rate 60.00 --right-of LVDS1
-
 # super + m
-#  xrandr --output HDMI1 --same-as LVDS1 
+#  xrandr --output LVDS1 --primary --mode 1280x800 --rate 60.22 --output HDMI1 --mode 1920x1080 --rate 60.00 --right-of LVDS1
+
+super + m
+  xrandr --output HDMI1 --same-as LVDS1 
 
 super + shift + m
   xrandr --output HDMI1 --off
